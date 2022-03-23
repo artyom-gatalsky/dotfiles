@@ -1,0 +1,12 @@
+[user]
+    email = dummymail
+    name = Artyom Gatalsky
+    signingkey = 0xE991C47505459DD5
+[diff "sopsdiffer"]
+    textconv = sops -d
+[core]
+    editor = code --wait
+[pull]
+    rebase = false
+[commit]
+    gpgsign = true
