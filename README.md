@@ -16,6 +16,10 @@ aws configure
 ```
 ## Backup
 ```
-code --list-extensions >> vs_code_extensions_list.txt
-brew bundle dump
+code --list-extensions > vs_code_extensions_list.txt
+brew bundle dump -f
+cp ~/.gitconfig .
+sed dummymail .gitconfig
+cp -r ~/work/scripts .
+cp ~/.zshrc .
 ```
