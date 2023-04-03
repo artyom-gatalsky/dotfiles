@@ -1,4 +1,8 @@
 ## Install
-`make install`
+```
+make install
+```
 ## Backup
-`make backup`
+```
+make backup
+```
