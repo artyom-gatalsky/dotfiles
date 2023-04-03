@@ -1,8 +1,5 @@
-autoload -Uz compinit
-compinit
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/opt/terraform@0.12/bin:$PATH
-
+export PATH=$HOME/bin:/usr/local/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -72,7 +69,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git helm kubectl terraform)
+plugins=(ssh-agent git helm kubectl terraform)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,12 +103,15 @@ export LC_ALL=en_US.UTF-8
 alias stop-gp="~/work/scripts/stop-gp.sh"
 alias start-gp="~/work/scripts/start-gp.sh"
 alias route-flush="sudo ~/work/scripts/route-flush.sh"
+alias dns-flush="~/work/scripts/dns-flush.sh"
 alias aws-token="~/work/scripts/aws-token.sh"
 
 fpath=($fpath ~/.zsh/completion)
 source <(kubectl completion zsh)
 eval "$(direnv hook zsh)"
-export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
+eval "$(op completion zsh)"; compdef _op op
 export KUBE_EDITOR='code --wait'
+
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C '/opt/homebrew/bin/aws_completer' aws
